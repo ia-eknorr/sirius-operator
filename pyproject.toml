@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sirius-platform-operator"
+version = "0.1.0"
+description = "Kubernetes operator for sirius benchmark runs"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+authors = [{ name = "ia-eknorr" }]
+dependencies = [
+    "kopf>=1.37",
+    "kubernetes-asyncio>=29",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "janus>=1.0",
+    "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.27",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+sirius-platform-operator = "sirius_platform_operator.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sirius_platform_operator"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+files = ["src/sirius_platform_operator"]
+
+[[tool.mypy.overrides]]
+module = ["kopf.*", "janus.*"]
+ignore_missing_imports = true
