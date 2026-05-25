@@ -1,6 +1,6 @@
 """Subprocess smoke test for the binary's threading + shutdown behavior.
 
-Launches ``python -m sirius_platform_operator`` as a subprocess, waits for
+Launches ``python -m sirius_operator`` as a subprocess, waits for
 ``/healthz`` to come up, sends SIGTERM, and asserts the process exits with
 code 0 within the 5-second deadline. This validates the kopf-thread +
 uvicorn-main-thread bridge end-to-end without needing a real cluster.
@@ -25,7 +25,7 @@ PORT = 8080
 def _operator_process() -> Iterator[subprocess.Popen[bytes]]:
     env = {**os.environ, "PYTHONUNBUFFERED": "1"}
     proc = subprocess.Popen(
-        [sys.executable, "-m", "sirius_platform_operator"],
+        [sys.executable, "-m", "sirius_operator"],
         env=env,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
