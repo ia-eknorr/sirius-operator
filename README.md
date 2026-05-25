@@ -1,4 +1,4 @@
-# sirius-platform-operator
+# sirius-operator
 
 Kubernetes operator that drives `BenchmarkRun` resources through their lifecycle on the sirius benchmark platform. One container, one process: kopf watches CRDs in a dedicated thread, FastAPI serves a REST surface on the main thread, and both share an in-memory run cache.
 
@@ -6,7 +6,7 @@ Kubernetes operator that drives `BenchmarkRun` resources through their lifecycle
 
 ```bash
 pip install -e .[dev]
-python -m sirius_platform_operator
+python -m sirius_operator
 # in another terminal:
 curl http://localhost:8080/healthz
 ```
@@ -16,9 +16,9 @@ Send `SIGTERM` (`kill -TERM <pid>` or `Ctrl-C`) to shut down. The kopf thread an
 ## Layout
 
 ```
-src/sirius_platform_operator/
+src/sirius_operator/
   __init__.py
-  __main__.py       # python -m sirius_platform_operator
+  __main__.py       # python -m sirius_operator
   main.py           # process entry point; coordinates kopf thread + uvicorn
   state.py          # RunCache + janus.Queue bridge between threads
   rest/

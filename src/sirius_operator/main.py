@@ -39,7 +39,7 @@ from typing import TYPE_CHECKING
 import kopf
 import uvicorn
 
-from sirius_platform_operator.rest.app import app
+from sirius_operator.rest.app import app
 
 if TYPE_CHECKING:
     from types import FrameType

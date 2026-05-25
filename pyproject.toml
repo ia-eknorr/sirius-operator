@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sirius-platform-operator"
+name = "sirius-operator"
 version = "0.1.0"
 description = "Kubernetes operator for sirius benchmark runs"
 readme = "README.md"
@@ -29,10 +29,10 @@ dev = [
 ]
 
 [project.scripts]
-sirius-platform-operator = "sirius_platform_operator.main:main"
+sirius-operator = "sirius_operator.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/sirius_platform_operator"]
+packages = ["src/sirius_operator"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -41,7 +41,7 @@ asyncio_mode = "auto"
 [tool.mypy]
 strict = true
 python_version = "3.13"
-files = ["src/sirius_platform_operator"]
+files = ["src/sirius_operator"]
 
 [[tool.mypy.overrides]]
 module = ["kopf.*", "janus.*"]

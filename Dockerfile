@@ -17,4 +17,4 @@ RUN pip install --no-cache-dir /wheels/*.whl && rm -rf /wheels
 
 USER 65532
 EXPOSE 8080
-ENTRYPOINT ["python", "-m", "sirius_platform_operator"]
+ENTRYPOINT ["python", "-m", "sirius_operator"]

@@ -10,7 +10,7 @@ from __future__ import annotations
 import threading
 from concurrent.futures import ThreadPoolExecutor
 
-from sirius_platform_operator.state import RunCache
+from sirius_operator.state import RunCache
 
 
 def test_run_cache_thread_safe() -> None:
